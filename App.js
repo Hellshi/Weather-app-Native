@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import WheatherInfo from './components/WheatherInfo';
 import * as Location from 'expo-location'
 
 const API_KEY = '7290651dc0b266597e031812f9623844'
@@ -8,7 +9,8 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 export default function App() {
   const [error, setError] = useState(null)
-  const [wheater, setWheater] = useState([])
+  const [currentWeather, setWheater] = useState([])
+  const [units, setUnits] = useState('metric')
   useEffect(() => {
     Load()
   }, [])
@@ -33,12 +35,17 @@ export default function App() {
       }
     }catch(error){}
   }
-  if(wheater) {
-    const { main } = wheater
+  if(currentWeather) {
+    const { main } = currentWeather
+    const { weather } = currentWeather
       return (
-    <View style={styles.container}>
-      <Text>{main.temp}</Text>
+    <View style={styles.container}>      
       <StatusBar style="auto" />
+      <View style={styles.main}>
+        <WheatherInfo currentWeather={currentWeather} weather={weather}/>
+
+      </View>
+
     </View>
   )
   }
@@ -52,4 +59,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  main: {
+    justifyContent: 'center',
+    flex: 1
+  }
 });
