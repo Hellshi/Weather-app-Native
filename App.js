@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WheatherInfo from './components/WheatherInfo';
 import * as Location from 'expo-location'
+import Picker from './components/Picker';
 
 const API_KEY = '7290651dc0b266597e031812f9623844'
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?'
@@ -13,7 +14,7 @@ export default function App() {
   const [units, setUnits] = useState('metric')
   useEffect(() => {
     Load()
-  }, [])
+  }, [units])
 
   const Load = async() => {
     try{
@@ -41,6 +42,7 @@ export default function App() {
     <View style={styles.container}>      
       <StatusBar style="auto" />
       <View style={styles.main}>
+        <Picker unitSystem={units} setUnits={setUnits}/>
         <WheatherInfo currentWeather={currentWeather} weather={weather} name={name}/>
 
       </View>

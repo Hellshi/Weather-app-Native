@@ -14,7 +14,7 @@ export default function WheatherInfo({ currentWeather, weather, name }) {
         <View style={styles.WheatherInfo}>
             <Text>{name? name : 'Loading data'}</Text>
             <Image style={styles.imageStyle} source={{ uri: imageUrl }}></Image>
-            <Text style={styles.textPrimary}>{main ? `${main.temp}C°` : 'Loading Info'}</Text>
+            <Text style={styles.textPrimary}>{main ? `${main.temp}°` : 'Loading Info'}</Text>
             <Text style={styles.textDescription}>{weather ? weather[0].description : 'Loading Info'}</Text>
             <Text style={styles.textSecondary}>{weather ? weather[0].main : 'Loading Info'}</Text>
 
