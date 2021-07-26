@@ -25,7 +25,7 @@ export default function App() {
       }
       const location = await Location.getCurrentPositionAsync()
       const { latitude, longitude } = location.coords
-      const wheatherURL = `${baseURL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      const wheatherURL = `${baseURL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=${units}`
       const response = await fetch(wheatherURL)
       const result = await response.json()
       if(response.ok) {
@@ -36,13 +36,12 @@ export default function App() {
     }catch(error){}
   }
   if(currentWeather) {
-    const { main } = currentWeather
-    const { weather } = currentWeather
+    const { weather, name } = currentWeather
       return (
     <View style={styles.container}>      
       <StatusBar style="auto" />
       <View style={styles.main}>
-        <WheatherInfo currentWeather={currentWeather} weather={weather}/>
+        <WheatherInfo currentWeather={currentWeather} weather={weather} name={name}/>
 
       </View>
 
