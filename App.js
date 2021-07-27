@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WheatherInfo from './components/WheatherInfo';
-import * as Location from 'expo-location'
+import * as Location from 'expo-location';
+import ReloadIcon from './components/ReloadIcon';
 import Picker from './components/Picker';
 
 const API_KEY = '7290651dc0b266597e031812f9623844'
@@ -43,6 +44,7 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={styles.main}>
         <Picker unitSystem={units} setUnits={setUnits}/>
+        <ReloadIcon load={Load}/>
         <WheatherInfo currentWeather={currentWeather} weather={weather} name={name}/>
 
       </View>

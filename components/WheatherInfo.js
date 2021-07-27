@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { colors } from '../utils/index'
 const { PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR } = colors
 
-export default function WheatherInfo({ currentWeather, weather, name }) {
+export default function WheatherInfo({ currentWeather, name }) {
     
     console.log(weather)
     const { main } = currentWeather
-    //const { icon } = weather
+    const { weather } = currentWeather
     const imageUrl = `https://openweathermap.org/img/wn/${weather ? weather[0].icon : '01d'  }@4x.png`
     console.log(weather)
     return (
