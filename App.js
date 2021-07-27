@@ -5,6 +5,7 @@ import WheatherInfo from './components/WheatherInfo';
 import * as Location from 'expo-location';
 import ReloadIcon from './components/ReloadIcon';
 import Picker from './components/Picker';
+import WeatherDetails from './components/WeatherDetails';
 
 const API_KEY = '7290651dc0b266597e031812f9623844'
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?'
@@ -37,7 +38,7 @@ export default function App() {
       }
     }catch(error){}
   }
-  if(currentWeather) {
+  if(currentWeather !== undefined) {
     const { weather, name } = currentWeather
       return (
     <View style={styles.container}>      
@@ -46,7 +47,7 @@ export default function App() {
         <Picker unitSystem={units} setUnits={setUnits}/>
         <ReloadIcon load={Load}/>
         <WheatherInfo currentWeather={currentWeather} weather={weather} name={name}/>
-
+        <WeatherDetails currentWeather={currentWeather} metricSystem={units}/>
       </View>
 
     </View>

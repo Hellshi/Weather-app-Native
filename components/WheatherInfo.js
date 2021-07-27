@@ -4,8 +4,7 @@ import { colors } from '../utils/index'
 const { PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR } = colors
 
 export default function WheatherInfo({ currentWeather, name }) {
-    
-    console.log(weather)
+    console.log(currentWeather)
     const { main } = currentWeather
     const { weather } = currentWeather
     const imageUrl = `https://openweathermap.org/img/wn/${weather ? weather[0].icon : '01d'  }@4x.png`
